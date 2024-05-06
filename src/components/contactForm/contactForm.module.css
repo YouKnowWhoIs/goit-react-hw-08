@@ -1,8 +1,12 @@
+.phonebook-text {
+  padding: 10px 0 10px 130px;
+}
+
 .contact-form {
   border: 2px solid rgb(152, 135, 113);
   background-color: rgb(231, 213, 185);
   border-radius: 5px;
-  margin: 7px;
+  margin: 7px 30px;
   padding: 15px 10px 15px 10px;
   width: 330px;
   display: flex;

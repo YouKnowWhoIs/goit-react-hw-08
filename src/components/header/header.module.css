@@ -1,0 +1,40 @@
+.heaer-conteiner {
+  margin: 20px 25px;
+  font-size: x-large;
+  font-weight: 600;
+  border-bottom: 2px solid rgb(152, 135, 113);
+  padding: 0 0 10px 0;
+}
+
+.header-nav-text,
+.header-nav-text-cantacts {
+  text-decoration: none;
+  color: black;
+}
+.header-nav-text:hover,
+.header-nav-text-cantacts:hover {
+  color: rgb(152, 135, 113);
+}
+
+.header-nav-text-cantacts {
+  padding-left: 25px;
+}
+
+.header-nav-text-register,
+.header-nav-text-login {
+  float: right;
+  padding: 0 30px 0 0;
+}
+
+.header-nav-text-register {
+  padding: 0;
+}
+
+/* .active {
+  color: rgb(152, 135, 113);
+  font-weight: 700;
+}
+
+.notActive {
+  color: #111;
+} */

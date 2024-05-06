@@ -3,9 +3,9 @@ import {
   fetchContactsThunk,
   addContactsThunk,
   removeContactsThunk,
-} from "./contactsOps";
+} from "./contactsOps.js";
 
-import { selectNameFilter } from "./filtersSlice.js";
+import { selectNameFilter } from "../filters/filtersSlice.js";
 
 const initialState = {
   contacts: {
