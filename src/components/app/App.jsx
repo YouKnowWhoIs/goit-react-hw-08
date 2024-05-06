@@ -9,8 +9,8 @@ import { LoginForm } from "../../pages/loginPage/loginPage.jsx";
 import { RegistrationForm } from "../../pages/registerPage/registerPage.jsx";
 import { ContactsPage } from "../../pages/contactsPage/contactsPage.jsx";
 
-import { RefreshUser } from "../../redux/auth/operations.js";
-import { selectIsLoggedIn } from "../../redux/auth/slice.js";
+import { RefreshUser } from "../../redux/auth/authOps.js";
+import { selectIsLoggedIn } from "../../redux/auth/authSlice.js";
 import { PrivateRoute } from "./privateRoute.jsx";
 import { RestrictedRoute } from "./restrictedRoute.jsx";
 
