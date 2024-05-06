@@ -6,7 +6,7 @@ import { Register } from "../../redux/auth/operations";
 
 const initialValues = {
   email: "",
-  userName: "",
+  name: "",
   password: "",
 };
 
@@ -14,11 +14,11 @@ export const RegistrationForm = () => {
   const dispatch = useDispatch();
 
   const FormSchema = Yup.object().shape({
-    userName: Yup.string()
+    name: Yup.string()
       .trim()
       .min(6, "Too short!")
       .max(20, "Too long!")
-      .required("UserName is a required!"),
+      .required("name is a required!"),
     email: Yup.string()
       .trim()
       .email("This must be available email")
@@ -32,7 +32,7 @@ export const RegistrationForm = () => {
   const handleSumbit = (values, actions) => {
     dispatch(
       Register({
-        userName: values.userName,
+        name: values.name,
         email: values.email,
         password: values.password,
       })
@@ -59,14 +59,14 @@ export const RegistrationForm = () => {
           />
           <ErrorMessage name="email" className="error-message-form" />
 
-          <label className="register-label">UserName:</label>
+          <label className="register-label">Name:</label>
           <Field
             type="text"
-            name="userName"
-            placeholder="userName..."
+            name="name"
+            placeholder="name..."
             className="form-input-register"
           />
-          <ErrorMessage name="userName" className="error-message-form" />
+          <ErrorMessage name="name" className="error-message-form" />
 
           <label className="register-label">Password:</label>
           <Field

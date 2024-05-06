@@ -1,27 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Register, Login, LogOut, RefreshUser } from "./operations.js";
 
-// const initialState = {
-//   user: {
-//     name: null,
-//     email: null,
-//   },
-//   token: null,
-//   isLoggedIn: false,
-//   isRefreshing: false,
-// };
+const initialState = {
+  user: {
+    name: null,
+    email: null,
+  },
+  token: null,
+  isLoggedIn: false,
+  isRefreshing: false,
+};
 
 const authSlice = createSlice({
   name: "auth",
-  initialState: {
-    user: {
-      name: null,
-      email: null,
-    },
-    token: null,
-    isLoggedIn: false,
-    isRefreshing: false,
-  },
+  initialState,
 
   extraReducers: (builder) => {
     builder

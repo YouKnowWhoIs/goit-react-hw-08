@@ -8,6 +8,8 @@
 @import url("../../pages/loginPage/loginPage.module.css");
 @import url("../../pages/registerPage/registerPage.module.css");
 @import url("../../pages/homePage/homePage.module.css");
+@import url("../authNav/authNav.module.css");
+@import url("../userMenu/userMenu.module.css");
 
 body {
   margin: 0;

@@ -1,11 +1,3 @@
-.heaer-conteiner {
-  margin: 20px 25px;
-  font-size: x-large;
-  font-weight: 600;
-  border-bottom: 2px solid rgb(152, 135, 113);
-  padding: 0 0 10px 0;
-}
-
 .header-nav-text,
 .header-nav-text-cantacts {
   text-decoration: none;
@@ -18,4 +10,14 @@
 
 .header-nav-text-cantacts {
   padding-left: 25px;
+}
+
+.header-nav-text-register,
+.header-nav-text-login {
+  float: right;
+  padding: 0 30px 0 0;
+}
+
+.header-nav-text-register {
+  padding: 0;
 }
