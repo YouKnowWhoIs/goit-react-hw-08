@@ -1,9 +1,11 @@
 import { Contact } from "../contact/contact.jsx";
 import { useSelector } from "react-redux";
 import { selectFilteredContacts } from "../../redux/contacts/contactsSlice.js";
+// import { selectNumberFilter } from "../../redux/contacts/contactsSlice.js";
 
 export const ContactList = () => {
   const filteredContacts = useSelector(selectFilteredContacts);
+  // const filteredContactsByNumber = useSelector(selectNumberFilter);
 
   // console.log(filteredContacts);
 

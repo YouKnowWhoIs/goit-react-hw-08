@@ -3,9 +3,10 @@ import {
   fetchContactsThunk,
   addContactsThunk,
   removeContactsThunk,
-} from "./contactsOps.js";
+} from "./operations.js";
 
 import { selectNameFilter } from "../filters/filtersSlice.js";
+import { selectNumberFilter } from "../filters/filtersSlice.js";
 
 const initialState = {
   contacts: {
@@ -65,11 +66,23 @@ export const selectContacts = (state) => state.contacts.items;
 export const contactReducer = contactSlice.reducer;
 
 export const selectFilteredContacts = createSelector(
-  [selectContacts, selectNameFilter],
-  (contacts, filter) => {
-    if (!filter) return contacts;
-    return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
+  [selectContacts, selectNameFilter, selectNumberFilter],
+  (contacts, filterName, filterNumber) => {
+    if (!filterName && !filterNumber) return contacts;
+
+    let filteredContacts = contacts;
+
+    if (filterName) {
+      filteredContacts = filteredContacts.filter((contact) =>
+        contact.name.toLowerCase().includes(filterName.toLowerCase())
+      );
+    }
+    if (filterNumber) {
+      filteredContacts = filteredContacts.filter((contact) =>
+        contact.number.includes(filterNumber)
+      );
+    }
+
+    return filteredContacts;
   }
 );

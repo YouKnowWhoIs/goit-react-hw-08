@@ -7,7 +7,7 @@ import { ContactList } from "../../components/contactList/contactList.jsx";
 import { LoadingContacts } from "../../components/loading/loadingContacts.jsx";
 import { Error } from "../../components/error/error.jsx";
 
-import { fetchContactsThunk } from "../../redux/contacts/contactsOps.js";
+import { fetchContactsThunk } from "../../redux/contacts/operations.js";
 
 export const ContactsPage = () => {
   const dispatch = useDispatch();
