@@ -1,10 +1,9 @@
 import { Circles } from "react-loader-spinner";
 
 const loaderStyle = {
-  //   textAlign: "center",
   display: "flex",
   justifyContent: "center",
-  padding: "291px",
+  padding: "25%",
   backgroundColor: "rgba(0, 0, 0, 0.2)",
 };
 
