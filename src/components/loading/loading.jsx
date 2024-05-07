@@ -3,8 +3,8 @@ import { Circles } from "react-loader-spinner";
 const loaderStyle = {
   display: "flex",
   justifyContent: "center",
-  padding: "25%",
-  backgroundColor: "rgba(0, 0, 0, 0.2)",
+  paddingTop: "300px",
+  // backgroundColor: "rgba(0, 0, 0, 0.2)",
 };
 
 export const Loading = () => {
@@ -13,7 +13,7 @@ export const Loading = () => {
       <Circles
         height="120"
         width="120"
-        color="#fff"
+        color="rgb(152, 135, 113)"
         ariaLabel="circles-loading"
         wrapperStyle={{}}
         wrapperClass=""
