@@ -43,44 +43,46 @@ export const ContactForm = () => {
     <>
       <h1 className="phonebook-text">Phonebook</h1>
 
-      <Formik
-        initialValues={initialValues}
-        onSubmit={handleSumbit}
-        validationSchema={FormSchema}
-      >
-        <Form className="contact-form">
-          <label htmlFor={nameId}>Name:</label>
-          <Field
-            type="text"
-            name="name"
-            id={nameId}
-            className="form-input"
-            placeholder="Name"
-          />
-          <ErrorMessage
-            className="error-message-form"
-            name="name"
-            component="p"
-          />
-          <label htmlFor={numberId}>Number:</label>
-          <Field
-            type="number"
-            name="number"
-            id={numberId}
-            className="form-input"
-            placeholder="Number"
-          />
-          <ErrorMessage
-            className="error-message-form"
-            name="number"
-            component="p"
-          />
+      <div className="conteiner-contact-form">
+        <Formik
+          initialValues={initialValues}
+          onSubmit={handleSumbit}
+          validationSchema={FormSchema}
+        >
+          <Form className="contact-form">
+            <label htmlFor={nameId}>Name:</label>
+            <Field
+              type="text"
+              name="name"
+              id={nameId}
+              className="form-input"
+              placeholder="Name"
+            />
+            <ErrorMessage
+              className="error-message-form"
+              name="name"
+              component="p"
+            />
+            <label htmlFor={numberId}>Number:</label>
+            <Field
+              type="number"
+              name="number"
+              id={numberId}
+              className="form-input"
+              placeholder="Number"
+            />
+            <ErrorMessage
+              className="error-message-form"
+              name="number"
+              component="p"
+            />
 
-          <button type="submit" className="button-add-contact">
-            Add contant
-          </button>
-        </Form>
-      </Formik>
+            <button type="submit" className="button-add-contact">
+              Add contant
+            </button>
+          </Form>
+        </Formik>
+      </div>
     </>
   );
 };

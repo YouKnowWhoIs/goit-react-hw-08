@@ -6,13 +6,10 @@ export const Contact = ({ contact }) => {
 
   const handleOnDelete = (id) => {
     dispatch(removeContactsThunk(id));
-    // console.log(id);
-
-    // console.log(action);
   };
   return (
-    <>
-      <li className="contact-conteiner">
+    <div className="contact-conteiner">
+      <li className="contacts">
         <p>{contact.name}</p>
         <p>{contact.number}</p>
         <button
@@ -22,6 +19,6 @@ export const Contact = ({ contact }) => {
           Delete
         </button>
       </li>
-    </>
+    </div>
   );
 };

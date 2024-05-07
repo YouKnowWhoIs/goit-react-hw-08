@@ -4,11 +4,10 @@ import { useSelector } from "react-redux";
 import { AuthNav } from "../authNav/authNav.jsx";
 import { UserMenu } from "../userMenu/userMenu.jsx";
 
-import { selectIsLoggedIn } from "../../redux/auth/authSlice.js";
+import { selectIsLoggedIn } from "../../redux/auth/selectors.js";
 
-export const Header = () => {
+const Header = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  console.log(isLoggedIn);
 
   return (
     <div className="heaer-conteiner">
@@ -28,3 +27,5 @@ export const Header = () => {
     </div>
   );
 };
+
+export default Header;

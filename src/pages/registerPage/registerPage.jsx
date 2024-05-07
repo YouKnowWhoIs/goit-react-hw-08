@@ -2,7 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 
-import { Register } from "../../redux/auth/authOps";
+import { Register } from "../../redux/auth/operations.js";
 
 const initialValues = {
   email: "",
@@ -10,7 +10,7 @@ const initialValues = {
   password: "",
 };
 
-export const RegistrationForm = () => {
+const RegistrationForm = () => {
   const dispatch = useDispatch();
 
   const FormSchema = Yup.object().shape({
@@ -32,9 +32,9 @@ export const RegistrationForm = () => {
   const handleSumbit = (values, actions) => {
     dispatch(
       Register({
-        name: values.name,
-        email: values.email,
-        password: values.password,
+        name: values.name.trim(),
+        email: values.email.trim(),
+        password: values.password.trim(),
       })
     );
 
@@ -42,46 +42,62 @@ export const RegistrationForm = () => {
   };
 
   return (
-    <>
+    <div className="conteiner-register-form">
       <h2 className="register-text">Register</h2>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={FormSchema}
-        onSubmit={handleSumbit}
-      >
-        <Form className="conteiner-form-register">
-          <label className="register-label">Email:</label>
-          <Field
-            type="text"
-            name="email"
-            placeholder="email..."
-            className="form-input-register"
-          />
-          <ErrorMessage name="email" className="error-message-form" />
+      <div className="conteiner-register">
+        <Formik
+          initialValues={initialValues}
+          validationSchema={FormSchema}
+          onSubmit={handleSumbit}
+        >
+          <Form className="form">
+            <label className="register-label">Email:</label>
+            <Field
+              type="text"
+              name="email"
+              placeholder="email..."
+              className="form-input-register"
+            />
+            <ErrorMessage
+              name="email"
+              className="error-message-form"
+              component="p"
+            />
 
-          <label className="register-label">Name:</label>
-          <Field
-            type="text"
-            name="name"
-            placeholder="name..."
-            className="form-input-register"
-          />
-          <ErrorMessage name="name" className="error-message-form" />
+            <label className="register-label">Name:</label>
+            <Field
+              type="text"
+              name="name"
+              placeholder="name..."
+              className="form-input-register"
+            />
+            <ErrorMessage
+              name="name"
+              className="error-message-form"
+              component="p"
+            />
 
-          <label className="register-label">Password:</label>
-          <Field
-            type="password"
-            name="password"
-            placeholder="password..."
-            className="form-input-register"
-          />
-          <ErrorMessage name="password" className="error-message-form" />
+            <label className="register-label">Password:</label>
+            <Field
+              type="password"
+              name="password"
+              placeholder="password..."
+              className="form-input-register"
+            />
+            <ErrorMessage
+              name="password"
+              className="error-message-form"
+              component="p"
+            />
 
-          <button type="submit" className="register-button">
-            Register
-          </button>
-        </Form>
-      </Formik>
-    </>
+            <button type="submit" className="register-button">
+              Register
+            </button>
+          </Form>
+        </Formik>
+      </div>
+    </div>
   );
 };
+
+export default RegistrationForm;

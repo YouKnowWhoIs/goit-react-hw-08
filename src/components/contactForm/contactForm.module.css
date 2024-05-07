@@ -1,5 +1,10 @@
+.conteiner-contact-form {
+  display: flex;
+  justify-content: center;
+}
+
 .phonebook-text {
-  padding: 10px 0 10px 130px;
+  text-align: center;
 }
 
 .contact-form {

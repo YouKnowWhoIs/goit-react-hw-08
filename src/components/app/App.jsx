@@ -1,18 +1,23 @@
 import "./App.css";
-import { useEffect } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 
-import { Header } from "../header/header.jsx";
-import { HomePage } from "../../pages/homePage/homePage.jsx";
-import { LoginForm } from "../../pages/loginPage/loginPage.jsx";
-import { RegistrationForm } from "../../pages/registerPage/registerPage.jsx";
-import { ContactsPage } from "../../pages/contactsPage/contactsPage.jsx";
+const Header = lazy(() => import("../header/header.jsx"));
+const HomePage = lazy(() => import("../../pages/homePage/homePage.jsx"));
+const LoginForm = lazy(() => import("../../pages/loginPage/loginPage.jsx"));
+const RegistrationForm = lazy(() =>
+  import("../../pages/registerPage/registerPage.jsx")
+);
+const ContactsPage = lazy(() =>
+  import("../../pages/contactsPage/contactsPage.jsx")
+);
 
-import { RefreshUser } from "../../redux/auth/authOps.js";
-import { selectIsLoggedIn } from "../../redux/auth/authSlice.js";
+import { RefreshUser } from "../../redux/auth/operations.js";
+import { selectIsLoggedIn } from "../../redux/auth/selectors.js";
 import { PrivateRoute } from "./privateRoute.jsx";
 import { RestrictedRoute } from "./restrictedRoute.jsx";
+import { Loading } from "../loading/loading.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,36 +29,41 @@ function App() {
 
   return (
     <>
-      <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route
-          path="/login"
-          element={
-            <RestrictedRoute redirectTo="/contacts" component={<LoginForm />} />
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            <RestrictedRoute
-              redirectTo="/contacts"
-              component={<RegistrationForm />}
-            />
-          }
-        />
-        {isLoggedIn && (
+      <Suspense fallback={<Loading />}>
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
           <Route
-            path="/contacts"
+            path="/login"
             element={
-              <PrivateRoute
-                redirectTo="/register"
-                component={<ContactsPage />}
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<LoginForm />}
               />
             }
           />
-        )}
-      </Routes>
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<RegistrationForm />}
+              />
+            }
+          />
+          {isLoggedIn && (
+            <Route
+              path="/contacts"
+              element={
+                <PrivateRoute
+                  redirectTo="/register"
+                  component={<ContactsPage />}
+                />
+              }
+            />
+          )}
+        </Routes>
+      </Suspense>
     </>
   );
 }

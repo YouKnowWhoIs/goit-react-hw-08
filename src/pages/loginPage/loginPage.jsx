@@ -2,14 +2,14 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 
-import { Login } from "../../redux/auth/authOps.js";
+import { Login } from "../../redux/auth/operations.js";
 
 const initialValues = {
   email: "",
   password: "",
 };
 
-export const LoginForm = () => {
+const LoginForm = () => {
   const dispatch = useDispatch();
 
   const FormSchema = Yup.object().shape({
@@ -26,8 +26,8 @@ export const LoginForm = () => {
   const handleSumbit = (values, actions) => {
     dispatch(
       Login({
-        email: values.email,
-        password: values.password,
+        email: values.email.trim(),
+        password: values.password.trim(),
       })
     );
 
@@ -35,37 +35,50 @@ export const LoginForm = () => {
   };
 
   return (
-    <>
+    <div className="conteiner-login-form">
       <h2 className="login-text">Login</h2>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={FormSchema}
-        onSubmit={handleSumbit}
-      >
-        <Form className="conteiner-form">
-          <label className="login-label">Email:</label>
-          <Field
-            type="text"
-            name="email"
-            placeholder="email..."
-            className="form-input-login"
-          />
-          <ErrorMessage name="email" className="error-message-form" />
 
-          <label className="login-label">Password:</label>
-          <Field
-            type="password"
-            name="password"
-            placeholder="password..."
-            className="form-input-login"
-          />
-          <ErrorMessage name="password" className="error-message-form" />
+      <div className="conteiner-form">
+        <Formik
+          initialValues={initialValues}
+          validationSchema={FormSchema}
+          onSubmit={handleSumbit}
+        >
+          <Form className="form">
+            <label className="login-label">Email:</label>
+            <Field
+              type="text"
+              name="email"
+              placeholder="email..."
+              className="form-input-login"
+            />
+            <ErrorMessage
+              name="email"
+              className="error-message-form"
+              component="p"
+            />
 
-          <button type="submit" className="login-button">
-            Login
-          </button>
-        </Form>
-      </Formik>
-    </>
+            <label className="login-label">Password:</label>
+            <Field
+              type="password"
+              name="password"
+              placeholder="password..."
+              className="form-input-login"
+            />
+            <ErrorMessage
+              name="password"
+              className="error-message-form"
+              component="p"
+            />
+
+            <button type="submit" className="login-button">
+              Login
+            </button>
+          </Form>
+        </Formik>
+      </div>
+    </div>
   );
 };
+
+export default LoginForm;
