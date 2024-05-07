@@ -1,12 +1,13 @@
 import "./App.css";
-import { Suspense, lazy, useEffect } from "react";
+import { lazy, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 
-const Header = lazy(() => import("../header/header.jsx"));
+import { Layout } from "./layout.jsx";
+
 const HomePage = lazy(() => import("../../pages/homePage/homePage.jsx"));
-const LoginForm = lazy(() => import("../../pages/loginPage/loginPage.jsx"));
-const RegistrationForm = lazy(() =>
+const LoginPage = lazy(() => import("../../pages/loginPage/loginPage.jsx"));
+const RegistrationPage = lazy(() =>
   import("../../pages/registerPage/registerPage.jsx")
 );
 const ContactsPage = lazy(() =>
@@ -14,7 +15,10 @@ const ContactsPage = lazy(() =>
 );
 
 import { RefreshUser } from "../../redux/auth/operations.js";
-import { selectIsLoggedIn } from "../../redux/auth/selectors.js";
+import {
+  selectIsLoggedIn,
+  selectIsRefreshing,
+} from "../../redux/auth/selectors.js";
 import { PrivateRoute } from "./privateRoute.jsx";
 import { RestrictedRoute } from "./restrictedRoute.jsx";
 import { Loading } from "../loading/loading.jsx";
@@ -22,15 +26,17 @@ import { Loading } from "../loading/loading.jsx";
 function App() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const { isRefreshing } = useSelector(selectIsRefreshing);
 
   useEffect(() => {
     dispatch(RefreshUser());
   }, [dispatch]);
 
-  return (
+  return isRefreshing ? (
+    <Loading />
+  ) : (
     <>
-      <Suspense fallback={<Loading />}>
-        <Header />
+      <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route
@@ -38,7 +44,7 @@ function App() {
             element={
               <RestrictedRoute
                 redirectTo="/contacts"
-                component={<LoginForm />}
+                component={<LoginPage />}
               />
             }
           />
@@ -47,7 +53,7 @@ function App() {
             element={
               <RestrictedRoute
                 redirectTo="/contacts"
-                component={<RegistrationForm />}
+                component={<RegistrationPage />}
               />
             }
           />
@@ -63,7 +69,7 @@ function App() {
             />
           )}
         </Routes>
-      </Suspense>
+      </Layout>
     </>
   );
 }

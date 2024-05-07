@@ -3,9 +3,10 @@
 @import url("../searchBox/searchBox.module.css");
 @import url("../contact/contact.module.css");
 @import url("../error/error.module.css");
-@import url("../header/header.module.css");
-@import url("../../pages/loginPage/loginPage.module.css");
-@import url("../../pages/registerPage/registerPage.module.css");
+@import url("../appBar/appBar.module.css");
+@import url("../navigation/navigation.module.css");
+@import url("../loginForm/loginForm.module.css");
+@import url("../registrationForm/registrationForm.nodule.css");
 @import url("../../pages/homePage/homePage.module.css");
 @import url("../authNav/authNav.module.css");
 @import url("../userMenu/userMenu.module.css");

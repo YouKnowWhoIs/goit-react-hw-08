@@ -1,0 +1,11 @@
+.header-nav-text {
+  text-decoration: none;
+  color: black;
+}
+.header-nav-text:hover {
+  color: rgb(152, 135, 113);
+}
+
+.header-nav-text-cantacts {
+  padding-left: 25px;
+}
